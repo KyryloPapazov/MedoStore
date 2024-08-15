@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-
+use App\Models\Item;
+use App\Models\Order;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -35,4 +37,12 @@ class ProductController extends Controller
         $viewData["product"] = $product;
         return view('product.show')->with("viewData", $viewData);
     }
+
+    public function delete($id)
+    {
+        Product::destroy($id);
+        return back();
+    }
+
+
 }

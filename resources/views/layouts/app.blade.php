@@ -10,40 +10,62 @@
 </head>
 <body>
 <!-- header -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-secondary py-4">
+<nav class="navbar navbar-expand-lg navbar-dark bg-warning py-2">
     <div class="container">
-        <a class="navbar-brand" href="{{ route('home.index') }}">MedoStore</a>
+        <a class="navbar-brand" href="{{ route('home.index') }}">
+            <img src="https://img.icons8.com/color/48/000000/bee.png" alt="Bee Icon" class="me-2"/>
+            MedoStore
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
                 aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+        <a class="nav-link text-dark active" href="{{ route('home.index') }}">Home</a>
+        <a class="nav-link text-dark active" href="{{ route('product.index') }}">Products</a>
+        <a class="nav-link text-dark active" href="{{ route('cart.index') }}">Cart</a>
+        <a class="nav-link text-dark active" href="{{ route('home.about') }}">About</a>
+
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav ms-auto">
-                <a class="nav-link active" href="{{ route('home.index') }}">Home</a>
-                <a class="nav-link active" href="{{ route('product.index') }}">Products</a>
-                <a class="nav-link active" href="{{ route('home.about') }}">About</a>
+                <div class="bg-dark mx-2 d-none d-lg-block"></div>
+                @guest
+                    <a class="nav-link text-dark active" href="{{ route('login') }}">Login</a>
+                    <a class="nav-link text-dark active" href="{{ route('register') }}">Register</a>
+                @else
+                    <a href="{{ route('myaccount.orders') }}" class="nav-link text-dark active">My Orders</a>
+                    <form id="logout" action="{{ route('logout') }}" method="POST">
+                        <a role="button" class="nav-link text-dark active"
+                           onclick="document.getElementById('logout').submit();">Logout</a>
+                        @csrf
+                    </form>
+                @endguest
             </div>
         </div>
     </div>
 </nav>
-<header class="masthead bg-primary text-white text-center py-4">
+
+<header class="masthead bg-light text-dark text-center py-3" style="margin-top: 10px;">
     <div class="container d-flex align-items-center flex-column">
-        <h2>@yield('subtitle', 'A Laravel Online Store for bazaring production with med')</h2>
+        <h2>@yield('subtitle', 'MedoStore')</h2>
     </div>
 </header>
+
 <!-- header -->
-<div class="container my-4">
+<div class="my-4">
     @yield('content')
 </div>
 
 <!-- footer -->
-<div class="copyright py-4 text-center text-white">
+<div class="copyright py-4 text-center text-dark" style="background-color: #FFDD57;">
     <div class="container">
         <small>
             Copyright - <a class="text-reset fw-bold text-decoration-none" target="_blank"
                            href="#">
-                Kirusha Kukareky
+                Kyrylo Papazov
             </a> - <b>For resume</b>
+            <br>
+
+            <img src="https://img.icons8.com/color/24/000000/bee.png" alt="Bee Icon"/>
         </small>
     </div>
 </div>
