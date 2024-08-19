@@ -7,6 +7,17 @@
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
     <title>@yield('title', 'Online Store')</title>
+
+    <!-- Optional CSS if needed -->
+    <style>
+        /* Вирівнювання на великих екранах */
+        @media (min-width: 992px) {
+            .navbar-nav {
+                display: flex;
+                justify-content: flex-end;
+            }
+        }
+    </style>
 </head>
 <body>
 <!-- header -->
@@ -20,14 +31,15 @@
                 aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="nav-link text-dark active" href="{{ route('home.index') }}">Home</a>
-        <a class="nav-link text-dark active" href="{{ route('product.index') }}">Products</a>
-        <a class="nav-link text-dark active" href="{{ route('cart.index') }}">Cart</a>
-        <a class="nav-link text-dark active" href="{{ route('home.about') }}">About</a>
-
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav ms-auto">
-                <div class="bg-dark mx-2 d-none d-lg-block"></div>
+                <a class="nav-link text-dark active" href="{{ route('home.index') }}">Home</a>
+                <a class="nav-link text-dark active" href="{{ route('product.index') }}">Products</a>
+                <a class="nav-link text-dark active" href="{{ route('cart.index') }}">Cart</a>
+                <a class="nav-link text-dark active" href="{{ route('home.about') }}">About</a>
+
+
+                <div class="bg-dark mx-2 d-none d-lg-block vr"></div>
                 @guest
                     <a class="nav-link text-dark active" href="{{ route('login') }}">Login</a>
                     <a class="nav-link text-dark active" href="{{ route('register') }}">Register</a>
@@ -51,7 +63,7 @@
 </header>
 
 <!-- header -->
-<div class="my-4">
+<div class="my-2">
     @yield('content')
 </div>
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -10,6 +11,7 @@ class HomeController extends Controller
     {
         $viewData = [];
         $viewData = ["title" => "Home Page - Store With Honey"];
+        $viewData["products"] = Product::all();
         return view('home.index')->with("viewData", $viewData);
     }
 

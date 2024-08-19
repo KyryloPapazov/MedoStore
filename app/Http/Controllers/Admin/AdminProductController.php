@@ -72,4 +72,12 @@ class AdminProductController extends Controller
         $product->save();
         return redirect()->route('admin.product.index');
     }
+
+    public function delete($id)
+    {
+        Product::destroy($id);
+        return back();
+    }
+
+
 }
